@@ -31,7 +31,7 @@ const projectPath = path.resolve(__dirname, '..');
 const server = new Server(
     {
         name: "DataSource MCP Client Server",
-        version: "1.0.0",
+        version: "1.0.1",
     }
 );
 
@@ -301,7 +301,7 @@ export async function main(): Promise<void> {
 }
 
 // Run server if this is the main module
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (fileURLToPath(import.meta.url) === path.resolve(process.argv[1])) {
     main().catch((error) => {
         logger.error(`Server startup failed: ${error}`);
         process.exit(1);

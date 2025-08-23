@@ -4,6 +4,8 @@
 
 import { executeSql } from '../utils/db-operate.js';
 import { logger } from '../utils/logger-util.js';
+import { fileURLToPath } from 'url';
+import * as path from 'path';
 
 async function testDatabaseConnection() {
     console.log('🚀 开始测试数据库连接...\n');
@@ -57,7 +59,7 @@ async function testDatabaseConnection() {
 }
 
 // 运行测试
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (fileURLToPath(import.meta.url) === path.resolve(process.argv[1])) {
     testDatabaseConnection()
         .then(() => {
             console.log('\n✨ 测试完成，程序退出');

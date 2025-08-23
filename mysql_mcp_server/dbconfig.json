@@ -17,7 +17,7 @@
         {   "dbInstanceId": "mysql_2",
             "dbHost": "localhost",
             "dbPort": 3306,
-            "dbDatabase": "mydb",
+            "dbDatabase": "mysql_db",
             "dbUsername": "root",
             "dbPassword": "123456",
             "dbType": "MySQL",

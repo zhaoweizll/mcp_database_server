@@ -5,7 +5,7 @@
  */
 
 // Package metadata
-export const __version__ = "1.0.0";
+export const __version__ = "1.0.1";
 export const __author__ = "zhaoweizll";
 export const __email__ = "zhaoweizll@foxmail.com";
 export const __description__ = "A Model Context Protocol (MCP) server that enables secure interaction with MySQL/MariaDB/TiDB/AWS OceanBase/RDS/Aurora MySQL DataBases.";
