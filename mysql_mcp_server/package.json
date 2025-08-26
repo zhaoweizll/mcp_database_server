@@ -1,6 +1,6 @@
 {
   "name": "@zhaoweizll/mysql-mcp-server",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A Model Context Protocol (MCP) server that enables secure interaction with MySQL/MariaDB/TiDB/AWS OceanBase/RDS/Aurora MySQL DataBases - TypeScript version",
   "type": "module",
   "main": "dist/index.js",
