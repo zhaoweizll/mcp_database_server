@@ -423,21 +423,24 @@ server.setRequestHandler(ReadResourceRequestSchema, async (request): Promise<Rea
 
 // Main function
 export async function main(): Promise<void> {
-    logger.info(`Database configuration file path: ${dbConfigPath}`);
-    logger.info(`Current project path: ${projectPath}`);
-    logger.info("Xesql/Mysql/Ubisql DataSource MCP Client server is ready to accept connections");
-
     try {
+        logger.info(`Database configuration file path: ${dbConfigPath}`);
+        logger.info(`Current project path: ${projectPath}`);
+        
+        // Load database configuration first
         const [activeDb, dbConfig] = loadActivateDbConfig();
         logger.info(`Current database instance configuration: ${JSON.stringify(activeDb)}`);
-    } catch (error) {
-        logger.error(`Failed to load database configuration: ${error}`);
-        process.exit(1);
-    }
+        
+        logger.info("Xesql/Mysql/Ubisql DataSource MCP Client server is ready to accept connections");
 
-    const transport = new StdioServerTransport();
-    await server.connect(transport);
-    logger.info("MCP server connected and ready");
+        const transport = new StdioServerTransport();
+        await server.connect(transport);
+        logger.info("MCP server connected and ready");
+    } catch (error) {
+        logger.error(`Failed to start MCP server: ${error}`);
+        // Don't exit immediately, let MCP client handle the error
+        throw error;
+    }
 }
 
 // Run server if this is the main module

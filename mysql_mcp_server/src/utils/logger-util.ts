@@ -22,11 +22,11 @@ const logLevelArray = ['error', 'warn', 'info', 'verbose', 'debug', 'silly'];
 function getDbConfigFile(): string {
     const configFile = process.env.config_file;
     if (configFile && fs.existsSync(configFile)) {
-        console.log(`Get database configuration path from environment variable config_file: ${configFile}`);
+        //console.log(`Get database configuration path from environment variable config_file: ${configFile}`);
         return configFile;
     } else {
         const defaultConfig = path.join(projectPath, "dbconfig.json");
-        console.log(`Using default database configuration path: ${defaultConfig}`);
+        //console.log(`Using default database configuration path: ${defaultConfig}`);
         return defaultConfig;
     }
 }
@@ -113,7 +113,8 @@ function setupLogger(logFile: string, logLevel: string): winston.Logger {
                 format: winston.format.combine(
                     winston.format.colorize(),
                     winston.format.simple()
-                )
+                ),
+                stderrLevels: ['error', 'warn', 'info', 'verbose', 'debug', 'silly']
             }),
             // Also output to file
             new winston.transports.File({
