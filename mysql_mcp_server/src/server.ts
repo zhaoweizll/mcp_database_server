@@ -31,7 +31,7 @@ const projectPath = path.resolve(__dirname, '..');
 const server = new Server(
     {
         name: "DataSource MCP Client Server",
-        version: "1.0.2",
+        version: "1.0.3",
     }
 );
 
